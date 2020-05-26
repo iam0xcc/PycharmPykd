@@ -18,7 +18,8 @@ def logBinary(fineName,addrStart,size):
     f.close()
 
 def logStr(fileName,content):
-    '把content写入到文件中'
+    '把content写入到fileName日志文件中'
     f = open(fileName, 'a')
+    content=str(content)+'\n'
     f.write(content)
     f.close()

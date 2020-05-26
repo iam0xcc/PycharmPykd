@@ -3,6 +3,7 @@
 # !load pykd.pyd
 from  windbgPy import pykdPackage
 from windbgPy import BpCondition
+from windbgPy import Log
 
 print("Hello")
 
@@ -46,7 +47,8 @@ def main():
     # pykdPackage.go()
     ebx=pykdPackage.getMouleByName("nt")
     print(ebx.offset("PsLoadedModuleList"))
-    print(ebx.type("_EPROCESS"))
+    # print(ebx.type("_EPROCESS"))
+    Log.logStr("D:\\windbgpy\\log\\test.txt",ebx)
 
 
 

@@ -1,6 +1,8 @@
 # -*- coding: UTF-8 -*-
 #重新封装的pykd
 import pykd
+#4表示32位架构，8表示64位架构
+arc=pykd.ptrSize()
 
 def Hex(arg):#-->str
     ret=hex(arg)
@@ -226,6 +228,24 @@ def isKernelDebugging():
 # print nt.typedVar( "_LIST_ENTRY", nt.PsLoadedModuleList )
 def getMouleByName(name):
     return pykd.module(name)
+
+# kd> .formats 0x0000000000170678
+# Evaluate expression:
+#   Hex:     00000000`00170678
+#   Decimal: 1508984
+#   Octal:   0000000000000005603170
+#   Binary:  00000000 00000000 00000000 00000000 00000000 00010111 00000110 01111000
+#   Chars:   .......x
+#   Time:    Sun Jan 18 19:09:44 1970
+#   Float:   low 2.11454e-039 high 0
+#   Double:  7.45537
+#straddr可以是十六进制数字字符串0x0000000000170678或者0000000000170678
+#也可以是寄存器，比如cr4
+def formats(straddr):
+    strTemp=".formats "+straddr
+    return dbgCommand(strTemp)
+
+
 
 
 
